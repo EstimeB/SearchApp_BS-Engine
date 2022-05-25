@@ -27,10 +27,6 @@ const typeDefs = gql`
     }
 
     type Query {
-        users: [User]
-        user(username: String!): User
-        books(username: String): [Book]
-        book(bookId: ID!): Book
         me: User
     }
 
@@ -38,7 +34,13 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         saveBook(authors: String!, description: String!, bookId: String!, image: String!, title: String!, link: String!): User
-        removeBook(thoughtId: ID!): User
+        removeBook(bookId: ID!): User
     }
 
 `
+
+// type query
+// users: [User]
+// user(username: String!): User
+// books(username: String): [Book]
+// book(bookId: ID!): Book
