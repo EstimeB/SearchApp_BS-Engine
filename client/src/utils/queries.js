@@ -7,7 +7,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      saveBook {
+      saveBooks {
         _id
         authors
         description

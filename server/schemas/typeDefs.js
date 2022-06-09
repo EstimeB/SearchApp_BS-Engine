@@ -18,7 +18,7 @@ const typeDefs = gql`
         bookId: String
         image: String
         link: String
-        title: String
+        title: String!
     }
 
     type Auth {
@@ -38,11 +38,5 @@ const typeDefs = gql`
     }
 
 `
-
-// type query
-// users: [User]
-// user(username: String!): User
-// books(username: String): [Book]
-// book(bookId: ID!): Book
 
 module.exports = typeDefs;
