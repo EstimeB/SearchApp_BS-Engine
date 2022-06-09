@@ -13,7 +13,7 @@ const typeDefs = gql`
 
     type Book {
         _id: ID
-        authors: String
+        authors: [String]
         description: String
         bookId: String
         image: String
@@ -44,3 +44,5 @@ const typeDefs = gql`
 // user(username: String!): User
 // books(username: String): [Book]
 // book(bookId: ID!): Book
+
+module.exports = typeDefs;

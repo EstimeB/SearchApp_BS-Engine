@@ -13,7 +13,7 @@ const resolvers = {
         // },
         me: async (parent, args, context) => {
             if (context.user) {
-              return User.findOne({ _id: context.user._id }).populate('saveBook');
+              return User.findOne({ _id: context.user._id }).populate('saveBooks');
             }
             throw new AuthenticationError('You need to be logged in!');
         },
@@ -43,10 +43,10 @@ const resolvers = {
             return { token, user };
         },
 
-        SaveBook: async (parent, { userId, authors, description, bookId, image, link, title }, context) => {
+        saveBook: async (parent, { authors, description, bookId, image, link, title }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
-                  { _id: userId },
+                  { _id: context.user._id },
                   {
                     $addToSet: {
                       books: { authors, description, bookId, image, link, title },
@@ -61,10 +61,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        removeBook: async (parent, { userId, bookId }, context) => {
+        removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
-                    { _id: userId },
+                    { _id:  context.user._id},
                     {
                       $pull: {
                         books: {
